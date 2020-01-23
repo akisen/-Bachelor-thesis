@@ -1,9 +1,136 @@
-\documentclass{jarticle}
+\documentclass[a4j, 11pt]{jarticle}
+% START:共通設定＆共通パッケージ読み込み（基本変更しない）
+\renewcommand{\baselinestretch}{1.4}
+\setlength{\oddsidemargin}{-0mm}
+\setlength{\textwidth}{16cm}
+\setlength{\topmargin}{-1.5cm}
+\setlength{\textheight}{24cm}
+\setlength{\baselineskip}{2cm}
+\special{pdf: minorversion=7}    % 出力するPDFのバージョンを指定
+\usepackage{ifthen}              % if文制御用
 \usepackage[dvipdfmx]{graphicx}
-\title{敵対的生成ネットワークを用いた白線補完}
-\author{工学部情報工学科 T16I273C 小松耀人}
-\begin{document}
+\usepackage{amsmath}             % 数式用
+\usepackage{array}               % 数式での場合分け用
+\usepackage{url}                 % URL表示用
+\usepackage{here}                % [H]用
+\usepackage[dvipdfmx]{hyperref}  % 全体像把握＆簡易移動のため
+\usepackage{pxjahyper}           % 日本語のしおり（ブックマーク）表示用
+\hypersetup{pdfborder = {0 0 0}} % hyperrefリンクの囲みを消す
+\pagenumbering{roman}            % ページ番号をアラビア数字に変更
+\newcounter{fiscal_year}         % 卒業年度計算用
+\setcounter{fiscal_year}{\the\year}
+\ifthenelse{\the\month < 4}{
+	% 年明けから3月までは年-1にする
+	\addtocounter{fiscal_year}{-1}
+}{}
+% END:共通設定＆共通パッケージ読み込み（基本変更しない）
 
-\section{概要}
+
+% START:ユーザ設定＆ユーザパッケージ読み込み---------
+
+
+% END:ユーザ設定＆ユーザパッケージ読み込み-----------
+
+
+\begin{document}
+% START:タイトル
+\begin{titlepage}\Large ~
+{\normalsize \the\value{fiscal_year} 年度卒業}
+\vfill
+\begin{center}
+
+% START: 論文の種類-------------------------------
+%{\Huge 修士論文}
+{\Huge 卒業論文}
+% END: 論文の種類---------------------------------
+\end{center}
+\begin{center}
+
+% START: 日本語タイトル---------------------------
+敵対的生成ネットワークを用いた白線補完
+% END: 日本語タイトル-----------------------------
+\end{center}
+\begin{center}
+
+% START: 英語タイトル-----------------------------
+English Title
+% END: 英語タイトル-------------------------------
+\end{center}
+\vfill
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+
+% START: 論文の種類-------------------------------
+%所属 & 新潟大学自然科学研究科 電気情報工学専攻・林隆史研究室 \\
+所属 & 新潟大学工学部情報工学科・林隆史研究室 \\
+% END: 論文の種類---------------------------------
+\hline
+
+% START: 在籍番号---------------------------------
+在籍番号 & T16I273C \\
+% END: 在籍番号-----------------------------------
+\hline
+
+% START: 論文著者---------------------------------
+氏名 & 小松 耀人 \\
+% START: 論文著者---------------------------------
+\hline
+\end{tabular}
+\end{center}
+\vspace{1cm}
+\vfill
+\end{titlepage}
+\pagebreak
+\addtocounter{page}{1}
+\thispagestyle{empty}  % このページにページ番号を振らない
+% END:タイトル
+
+% START:アブストラクト-----------------------------
+\section*{概要}
+近年高齢者による事故も増え自動運転への期待も高まっているが、現在自動運転で多く使われている高精度地図が完成している道路は先進国の道路全体で1\%未満に過ぎない。\\
+\indent そこで、完全な自動運転の実現には自車の周りの状況を把握しその情報をもとに適切な進路を選択することが不可欠である。\\
+\indent 
+
+\section*{Abstract}
+English Abstract Here
+
+% END:アブストラクト-------------------------------
+
+% START:目次作成
+\newpage
+\tableofcontents       % 目次作成
+\thispagestyle{empty}  % このページにページ番号を振らない
+\pagebreak
+\pagenumbering{arabic} % ページ番号をアラビア数字に変更
+% END:目次作成
+
+
+% START:本編--------------------------------------
+\section{はじめに}
+ここから本編
+
+% END:本編----------------------------------------
+
+% START:参考文献----------------------------------
+%% ベタ打ちの場合
+\begin{thebibliography}{1}
+\bibitem{key1}サイト名\\ \url{http://google.com} （yyyy年mm月dd日アクセス） % ウェブサイトの場合
+\bibitem{key2}著者，書籍タイトル，出版                                      % 書籍，論文の場合
+\end{thebibliography}
+
+
+%% bibtexを使用する場合
+%\bibliography{ref}         % .bibファイルから拡張子を外した名前 ex)ref.bib
+%\bibliographystyle{junsrt} % 参考文献出力スタイル
+%\nocite{*}                 % 参照していない項目も出力する
+% END:参考文献------------------------------------
+
+
+\newpage
+\section*{謝辞}
+本研究を進めるにあたり，ご指導を頂いた林隆史教授に厚く感謝申し上げます．
+また，日常の議論を通じて多くの知識や示唆を頂いた林隆史研究室の皆様に感謝いたします．
 
 \end{document}
+%------------------------------------------------
