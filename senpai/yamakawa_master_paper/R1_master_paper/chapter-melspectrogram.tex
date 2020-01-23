@@ -1,0 +1,15 @@
+\chapter{メル周波数スペクトログラム}
+メル周波数スペクトログラムは，時間信号を短時間フーリエ変換して得られた振幅スペクトログラムをメル尺度に直したものである\cite{melspect}．本章では短時間フーリエ変換とメル周波数について説明する．
+
+\section{短時間フーリエ変換}
+短時間フーリエ変換(Shot-Term Fourier Transform : STFT)は，時間変化する信号$f(t)$に対し窓関数$w(t)$をずらしながら掛けていったものをフーリエ変換していく手法である．時間変化に対する周波数変化の関係を見ることができる．\eref{eq:stft}は離散時間に関するSTFTを示す．また，短時間フーリエ変換して得られたスペクトログラムの絶対値をとったものを振幅スペクトログラムという．
+\begin{eqnarray}
+	{\rm STFT}(t, \omega) = \sum_{t=-\infty}^{\infty} f(\tau + t)w(t)e^{-i\omega t} \label{eq:stft}
+\end{eqnarray}
+
+\section{メル周波数}
+メル周波数は人間の音高知覚が考慮された周波数の尺度であり，メル周波数の差が同じであれば，人間の感じる音高の差が同じになることを意図している．人間は可聴域の下限に近い音は高めに，上限に近い音は低めに聞こえる性質をもつ．メル周波数の単位はmelで表され，$1000$melを$1000$Hzとして基準とし，\eref{eq:mel}で計算される．$f_0$は$1000 \rm mel = 1000 \rm Hz$という制約から，\eref{eq:f0}で算出される従属パラメータとなる．
+\begin{eqnarray}
+	m =  m_0 \hspace{1pt} {\rm log}(\frac{f}{f_0} + 1) \label{eq:mel} \\
+	m_0 = \frac{1000}{{\rm log}(\frac{1000\bm Hz}{f_0} + 1)} \label{eq:f0}
+\end{eqnarray}

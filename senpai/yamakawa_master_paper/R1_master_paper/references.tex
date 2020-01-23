@@ -1,0 +1,81 @@
+%----------------------------------------------------------------------
+% 修士論文スタイルファイルのサンプル
+% 修士論文：(タイトル未定)
+% 新潟大学 大学院自然科学研究科 情報・計算機専攻 情報ネットワーク講座
+% 博士前期課程
+% 丸山秀志（maruyama@net.ie.niigata-u.ac.jp）
+% 提出予定日：(提出日未定)
+%----------------------------------------------------------------------
+
+%----------------------------------------------------------------------
+%プリアンブルの指定です．
+%11ptでjreportクラスを使用しています．
+%ですから，一番大きな見出しがchapterになります．
+%注意してください．
+%----------------------------------------------------------------------
+%---数字を○で囲む時に使用---
+\def\MARU#1{\leavevmode \setbox0\hbox{$\bigcirc$}%
+\copy0\kern-\wd0 \hbox to\wd0{\hfil{#1}\hfil}}
+
+%\usepackage{showkeys}%推敲用
+\pagestyle{plain}
+\makeatletter
+%\def\@cite#1{$\m@th^{\hbox{\@ove@rcfont #1）}}$}
+\def\@cite#1{\m@th{\hbox{[#1]}}}
+\makeatother
+
+%----------------------------------------------------------------------
+%参考文献の記入欄です．
+%----------------------------------------------------------------------
+\bibliographystyle{junsrt}
+\bibliography{pdga-jun}
+\addcontentsline{toc}{chapter}{参考文献}
+\begin{thebibliography}{99}% 文献数が10未満の時 {9}
+
+\bibitem{Mingwen}
+Mingwen Dong, “Convolutional Neural Network Achieves Human-level Accuracy in Music Genre Classification, ” Feb. 27, 2018.
+
+\bibitem{gradcam}
+Ramprasaath R. Selvaraju, Michael Cogswell, Abhishek Das, Ramakrishna Vedantam, Devi Parikh, Dhruv Batra, ”Grad-CAM Visual Explanations from Deep Networks via Gradient-based Localizations, ” March 21 2017.
+
+\bibitem{Adam}
+Diederik P. Kingma, Jimmy Lei Ba, ”ADAM: A Method for Stochastic Optimizer, ” Jan. 30, 2017
+
+\bibitem{CNN}
+”畳み込みニューラルネットワーク，” https://ml4a.github.io/ml4a/jp/convnets/, 参照Dec. 12. 2019.
+
+\bibitem{GAN}
+”GANと損失関数の計算についてまとめた，” \\
+https://qiita.com/kzkadc/items/f49718dc8aedbe8a1bee, 参照Dec. 12. 2019.
+
+\bibitem{wgan}
+Martin Arjovsky. Soumith Chintala, Leon Bottou, ”Wasserstein GAN, ” Dec. 6, 2017.
+
+\bibitem{wgan-gp}
+Ishaan Gulrajani, Faruk Ahmed, Martin Arjovsky, Vincent Dumoulin Aaron Courville, ”Improved Training of Wasserstein GANs, ” Dec. 25, 2017
+
+\bibitem{MINE}
+Mohamed Ishmael Belghazi, Aristide Baratin, Sai Rajeswar, Sherjil Ozair, Yoshua Bengio, Aaron Courville, R Devon Hjelm, ”Mutual Information Neural Estimation, ” June 7, 2018.
+
+\bibitem{deepinfomax}
+R Devon Hjelm, Alex Fedorov, Samuel Lavoie-Marchildon, Karan Grewal, Phil Bachman, Adam Trischler, Yoshua Bengio, ”Leaning Deep Representations by Mutual Information Estimation and Maximization, ” Feb. 22, 2019.
+
+\bibitem{melspect}
+”メル尺度，” https://ja.wikipedia.org/wiki/メル尺度, 参照Dec. 12. 2019.
+
+\bibitem{gtzan}
+”MARSYAS, Music Analysis Retrieval and SYnthesis for Audio Signals, http://marsyas.info/downloads/datasets.html, Sep. 2018
+
+\bibitem{gtzanissue}
+Bob L. Sturm, ”The GTZAN dataset: Its contents, its faults, their effects on evaluation, and its future use, ”June 10, 2013
+
+\bibitem{percuss_harmony}
+Derry FitzGerald, ”Hamonic/Percussive Separation Using Median Filtering, ”Sep. 6-10, 2010, Austria.
+
+\bibitem{weibin}
+Weibin Zhang, Wenkang Lei, Xiangmin Xu, Xiaofeng Xing, ”Improved Music Genre Classification with Convolutional Neural Network, ”Sep. 8-12, 2016, SanFrancisco, USA.
+
+\bibitem{genres}
+”音楽のジャンル一覧，” https://ja.wikipedia.org/wiki/音楽のジャンル一覧, 参照Dec. 12. 2019
+
+\end{thebibliography}

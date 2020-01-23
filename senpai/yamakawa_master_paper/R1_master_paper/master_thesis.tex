@@ -1,0 +1,146 @@
+\documentclass[a4paper,11pt]{jreport}
+\usepackage{master_thesis}
+\usepackage{here}
+\usepackage{epsf}
+\usepackage{subfigure}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{framed}
+\usepackage[dvipdfmx]{color}
+\usepackage{url}
+\usepackage[dvipdfm]{}
+\usepackage{bm}
+\usepackage[dvipdfmx, pdftitle={}, pdfauthor={}]{hyperref}
+\usepackage{pxjahyper}          %日本語のしおり（ブックマーク）表示用
+
+% リンク設定 (hyperref)
+\hypersetup{%
+    pdfborder = {0 0 0},
+}
+
+
+\definecolor{shadecolor}{gray}{0.85}
+
+%余白の設定
+%\geometry{left=25mm,right=25mm,top=25mm,bottom=25mm}
+
+\newcommand{\figref}[1]{図 \ref{#1}}
+\newcommand{\tabref}[1]{表 \ref{#1}}
+\newcommand{\eref}[1]{式(\ref{#1})}
+
+%---数字を○で囲む時に使用---
+\def\MARU#1{\leavevmode \setbox0\hbox{$\bigcirc$}%
+\copy0\kern-\wd0 \hbox to\wd0{\hfil{#1}\hfil}}
+
+%\usepackage{showkeys}%推敲用
+\pagestyle{plain}
+\makeatletter
+%\def\@cite#1{$\m@th^{\hbox{\@ove@rcfont #1）}}$}
+\def\@cite#1{\m@th{\hbox{[#1]}}}
+\makeatother
+\begin{document}
+
+%----------------------------------------------------------------------
+% 表紙
+%----------------------------------------------------------------------
+
+\begin{toppage}
+
+%タイトル
+% 第3引数はレイアウト調整のためのパラメータ．タイトルと氏名までの間隔
+\title{深層学習を用いた楽曲ジャンル分類における\\ジャンル境界の可視化}{Visualization of Boundaries in Music Genre Classification \\ by using Deep Learning}{80}
+%著者{所属}{氏名}
+\author{新潟大学 自然科学研究科}{F18C039J}{山川　颯人}
+% 指導教官
+\adviser{林　隆史 教授}
+%副指導教官
+\professor{中野　啓介 教授}{元木　達也 教授}
+
+% 提出日
+%\date{2019}{2}{22}
+
+\end{toppage}
+
+%----------------------------------------------------------------------
+% 概要(日本語)
+%----------------------------------------------------------------------
+\begin{jpnabstract}
+　近年ではインターネットが普及し，ディジタルミュージックコンテンツが劇的に増加している．効率の良い楽曲検索システムを実現するためにも，楽曲ジャンルを自動分類するモデルが必要不可欠である．しかしながら，楽曲ジャンル間を分類する基準は不明瞭であるため，モデル設計が困難となっている．
+
+
+そこで本研究では，分類基準の特徴を自動で抽出する深層学習を用いてモデルを設計し，楽曲ジャンル分類を行う．さらに学習した分類モデルから，楽曲ジャンル間の境界を可視化することを目的とする．
+
+
+提案手法において，畳み込みニューラルネットワーク(Convolutional Neural Network : CNN)による楽曲ジャンルの分類を行った結果，77.4\%の分類精度を確認した．さらに学習済みのCNNに対し，敵対生成ネットワーク(Generative Adversarial Network : GAN)を用いることで，CNNがジャンル分類するための入力データを生成した．最後にGANの入力ノイズベクトルと生成データの分類結果の関係を表す2次元ジャンルマップとして可視化を行い，ジャンル確率の連続変化を確認できた．
+
+\end{jpnabstract}
+
+\begin{engabstract}
+In recent years, the Internet has spread and digital music content has increased dramatically. In order to realize an efficient music search system, the model classifies music genres automatically is essential. However, designing a classification model is difficult beacuse the criteria for classifying music genres is unclear. 
+
+Therefore, in this study, we design a model using deep learning that automatically extracts features of classification criteria, and perform music genre classification. Then we visualize the boundaries among music genres from the learned classification model.
+
+
+In our proposed method, we classify the music genre by Convolutional Neural Network (CNN). As a result, we confirmed 77.4 \% classification accuracy. Then we generate data which is classifyed by the learned CNN by using Generative Adversarial Network (GAN). Finally, we visualize the relationship between the GAN input noise vector and the classification result of the generated data as a Two-Dimensional Genre Map.
+
+\end{engabstract}
+
+%----------------------------------------------------------------------
+% 目次
+%----------------------------------------------------------------------
+\contents
+
+%----------------------------------------------------------------------
+% はじめに
+%----------------------------------------------------------------------
+\include{chapter-hajimeni}
+%----------------------------------------------------------------------
+% 深層学習
+%----------------------------------------------------------------------
+\include{chapter-deeplearning}
+%----------------------------------------------------------------------
+% メル周波数スペクトログラム
+%----------------------------------------------------------------------
+\include{chapter-melspectrogram}
+%----------------------------------------------------------------------
+%関連研究
+%----------------------------------------------------------------------
+\include{chapter-old-study}
+%----------------------------------------------------------------------
+%提案手法
+%----------------------------------------------------------------------
+\include{chapter-proposed}
+%----------------------------------------------------------------------
+%実験と考察
+%----------------------------------------------------------------------
+\include{chapter-experiment}
+%----------------------------------------------------------------------
+% おわりに
+%----------------------------------------------------------------------
+\include{chapter-owarini}
+
+
+%\clearpage           
+%----------------------------------------------------------------------
+%謝辞
+%----------------------------------------------------------------------
+\addcontentsline{toc}{chapter}{謝辞}
+\begin{gratitude}
+
+本論文を執筆するにあたり，多大なるご指導ご協力を頂きました，新潟大学大学院自然科学研究科の林隆史教授に心より感謝いたします．
+また本研究の遂行に際し，様々にご指導，ご助言を頂いた，研究室の大学院修士課程学生並びに学部学生の皆様に深謝いたします．
+
+\end{gratitude}
+
+%----------------------------------------------------------------------
+%参考文献
+%----------------------------------------------------------------------
+\include{references}
+%-----------------------------------------------------------------------
+%付録
+%-----------------------------------------------------------------------
+\include{appendix}
+
+
+\end{document}
