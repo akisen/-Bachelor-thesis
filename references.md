@@ -14,5 +14,7 @@ https://arxiv.org/abs/1604.07379
 https://www.tri-ad.global/jp/news/20190425 (参照 2019-12-15)
 “日本経済新聞-車の自動運転用、ゼンリンが道路の三次元データを提供”
 https://www.nikkei.com/article/DGXNASFK1202G_S4A210C1000000/ (参照 2019-12-15)
+"ダイナミックマップについて"
+https://jidounten-lab.com/u_autonomous-map-company
 ## 一般道自動運転のための道路白線検出に関する研究
 https://tuat.repo.nii.ac.jp/?action=repository_action_common_download&item_id=1478&item_no=1&attribute_id=16&file_no=1
