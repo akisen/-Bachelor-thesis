@@ -117,7 +117,7 @@ English Abstract Here
 \indent 各章の説明(あとから)
 
 \chapter{ニューラルネットを用いた機械学習}
-本章では機械学習の中の一つであるニューラルネットについて基本的なことから説明し，次にCNN，GAN，MINEの仕組みについて詳しく説明する．
+本章では機械学習の中の一つであるニューラルネットについて基本的なことから説明し，次にCNN，GANの仕組みについて詳しく説明する．
 
 \section{深層学習}
 　深層学習は，\figref{fig:neuron}に示すような生物の脳の神経細胞をモデル化したニューロンを基にして，\figref{fig:tasou}のようにニューロンを多層に結合したモデル(ニューラルネットワーク)を用いる学習法である．個々のニューロン間の結合には重み$\bm{w}$というパラメータが与えられており，$\bm{w}$が更新されていく(学習する)ことで，問題にあった最適解を導く．この重み$\bm{w}$の学習法として，誤差逆伝播法を用いる．誤差逆伝播法は教師信号値$\bm{t}$と出力結果値$\bm{h(x)}$の誤差の大きさを表す損失関数$E$を定義し，$E$に対し各層の$\bm{w}$の微分係数(勾配)を求めることで$\bm{w}$を更新していく．\\
@@ -289,6 +289,15 @@ $a_k$は$k$番目のニューロンの出力値であり，$n$は最終層のニ
 	\bibitem{tri-ad}TRI-AD\\ \url{https://www.tri-ad.global/jp/news/20190425} （2020年01月27日アクセス） 
 	\bibitem{autolab}自動運転LAB\\ \url{https://jidounten-lab.com/u_autonomous-map-company} （2020年01月27日アクセス）
 	\bibitem{road_design}第６章 道路舗装に関する設計基準\\ \url{http://www.mlit.go.jp/sogoseisaku/inter/keizai/gijyutu/pdf/road_design_j2.pdf} （2020年01月27日アクセス）
+	\bibitem{Adam}
+	Diederik P. Kingma, Jimmy Lei Ba, ”ADAM: A Method for Stochastic Optimizer, ”
+
+	\bibitem{CNN}
+	畳み込みニューラルネットワーク\\ \url{https://ml4a.github.io/ml4a/jp/convnets/}（2020年01月27日アクセス）
+
+	\bibitem{GAN}
+	”GANと損失関数の計算についてまとめた，” \\
+	\url{https://qiita.com/kzkadc/items/f49718dc8aedbe8a1bee} （2020年01月27日アクセス）
 	\bibitem{key1}サイト名\\ \url{http://google.com} （yyyy年mm月dd日アクセス）
 	\bibitem{key1}サイト名\\ \url{http://google.com} （yyyy年mm月dd日アクセス） % ウェブサイトの場合
 \bibitem{key2}著者，書籍タイトル，出版                                      % 書籍，論文の場合
