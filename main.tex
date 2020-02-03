@@ -1,5 +1,6 @@
 \documentclass[a4j, 11pt]{jreport}
 % START:共通設定＆共通パッケージ読み込み（基本変更しない）
+\bibliographystyle{junsrt}
 \renewcommand{\baselinestretch}{1.4}
 \setlength{\oddsidemargin}{-0mm}
 \setlength{\textwidth}{16cm}
@@ -25,6 +26,7 @@
 	% 年明けから3月までは年-1にする
 	\addtocounter{fiscal_year}{-1}
 }{}
+\usepackage[format=hang,font=scriptsize]{caption}
 % END:共通設定＆共通パッケージ読み込み（基本変更しない）
 
 
@@ -396,17 +398,32 @@ GLCICは画像を局所的にも大域的にも整合性の取れた画像を生
 	\end{minipage}
 \end{table}
 \chapter{提案手法}
+前章で示したGLCICは3つのネットワークを組み合わせることによって非常に多くの画像において自然な補完をすることができるが、学習結果が収束し補完できるモデルができるまでに非常に長い時間がかかってしまうという欠点がある。\\
+景色に関して77\%の人が自然であると判断する画像を作成するまでにK80GPUを4台用いて約二ヶ月学習を要したという結果も出ており、画像全体で自然さを保ちつつマスク部を生成するのには非常にリソースが必要である。\\
+そこで提案手法では\tabref{tb:compare_learning}に示すように,この学習の収束までの時間の長さが補完対象の広さ由来だと考え、学習の対象をドライブレコーダーによって撮影された道路のデータのみに絞り、かつCelebAデータセットですでに学習されたモデルを流用し転移学習を行うことによって学習時間の削減を試みる。
+\begin{table}[H]
+	\centering
+	\label{tb:compare_learning}
+	\caption{学習にかかったリソースと使用したデータセットの大きさの比較}
+	\begin{tabular}{|c|c|c|}
+	\hline
+			   & 先行研究       & 提案手法           \\ \hline
+	データセット名    & places2    & waymo          \\ \hline
+	学習画像の枚数    & 1,800万     & 1.1万            \\ \hline
+	学習にかかったリソース & K80 4台×2ヶ月 & GTX1080Ti ×1週間 \\ \hline
+	\end{tabular}
+	\end{table}
 \chapter{提案手法の性能評価}
 提案手法の性能評価と使用したデータについて述べる。
 \section{評価実験の概要}
 ドライブレコーダーによって撮影されたデータを教師データとしてネットワークに与え、GANによってマスクした部分を補完した際の精度を比較する。
 \section{評価実験に用いた環境・ツール}
 \subsection{実験環境}
-本実験は表\ref{spec}に示す環境で行った
+本実験は\tabref{spec}に示す環境で行った
 \begin{table}[H]
-	\label{spec}
 	\caption{実験環境}
-	\begin{center}
+	\centering
+	\label{spec}
 	\begin{tabular}{|c|c|}
 	\hline
 	OS  & Windows 10 Pro(64bit)                      \\ \hline
@@ -415,13 +432,13 @@ GLCICは画像を局所的にも大域的にも整合性の取れた画像を生
 	GPU & NVIDIA(R) GeForce  GTX 1080 Ti 11GB GDDR5X \\ \hline
 	
 \end{tabular}
-\end{center}
+
 \end{table}
 \subsection{使用したプログラミング言語とライブラリ}
 実装のために表\ref{tb:environment}に示すツールを用いた
 \begin{table}[H]
-	\label{tb:environment}
 	\caption{使用した言語・ライブラリ}
+	\label{tb:environment}
 	\centering
 	\begin{tabular}{cc}
 	\hline
@@ -442,7 +459,49 @@ GLCICは画像を局所的にも大域的にも整合性の取れた画像を生
 	\caption{Waymoデータセットにおけるセンサーの配置}
 	\label{fig:waymo-sensor}
 \end{figure}
-図\ref{fig:waymo-sensor}で示した
+図\ref{fig:waymo-sensor}で示したセンサ類とカメラで撮影した画像のうち、本実験ではカメラによって撮影されたFRONTの画像のみを使用し、更にその中で白線がはっきりしているデータのみを抽出し教師データとして与えてネットワークを学習させた。もともとのwaymoデータセットに入っていたFRONTカメラで撮影した画像は20万枚だったが、その中から白線がはっきりしている約1.1万枚のみを使用した。\\
+\figref{fig:dataset_use1}-\figref{fig:dataset_notuse2}にデータセットの中で教師データとして使用したものと使用していないものの一例を示す。
+\begin{figure}[H]
+	\centering
+	  \begin{tabular}{c}
+		\begin{minipage}{0.50\hsize}
+		  \centering
+			\includegraphics[scale=0.5]
+							{images/datasets/use1.jpg}
+							\caption{データセットとして使用した画像の例(1)}
+							\label{fig:dataset_use1}
+		\end{minipage}
+   
+   
+		\begin{minipage}{0.50\hsize}
+		  \centering
+			\includegraphics[scale=0.5]
+							{images/datasets/use2.jpg}
+							\caption{データセットとして使用した画像の例(2)}
+							\label{fig:dataset_use2}
+		\end{minipage} \\
+   
+   
+		\begin{minipage}{0.50\hsize}
+		  \centering
+			\includegraphics[scale=0.5]
+							{images/datasets/notuse1.jpg}
+							\caption{データセットとして使用していない画像の例(1)}
+							\label{fig:dataset_notuse1}
+		\end{minipage}
+   
+   
+		\begin{minipage}{0.50\hsize}
+		  \centering
+			\includegraphics[scale=0.5]
+							{images/datasets/notuse2.jpg}
+							\caption{データセットとして使用していない画像の例(2)}
+							\label{fig:dataset_notuse2}
+		\end{minipage}
+   
+   
+	  \end{tabular}
+  \end{figure}          
 \section{実験結果}
 \chapter{考察}
 \chapter{まとめ}
@@ -465,13 +524,15 @@ GLCICは画像を局所的にも大域的にも整合性の取れた画像を生
 	”GANと損失関数の計算についてまとめた，” \\
 	\url{https://qiita.com/kzkadc/items/f49718dc8aedbe8a1bee} （2020年01月27日アクセス）
 	\bibitem{waymo-web}Waymo\\ \url{https://waymo.com/open/} （2020年01月30日アクセス）
-	\bibitem{waymo-paper}Waymo\\ Pei Sun, Henrik Kretzschmar, Xerxes Dotiwalla,Aurelien Chouard, Vijaysai Patnaik, Paul Tsui,James Guo, Yin Zhou,Yuning Chai,Benjamin Caine, Vijay Vasudevan, Wei Han, Jiquan Ngiam,Hang Zhao, Aleksei Timofeev, Scott Ettinger, Maxim Krivokon, Amy Gao, Aditya Joshi, Yu	Zhang, Jonathon Shlens, Zhifeng Chen, and Dragomir Anguelov,"Scalability in Perception for Autonomous Driving: Waymo Open Dataset",18 Dec 2019
+	\bibitem{waymo-paper}Pei Sun, Henrik Kretzschmar, Xerxes Dotiwalla,Aurelien Chouard, Vijaysai Patnaik, Paul Tsui,James Guo, Yin Zhou,Yuning Chai,Benjamin Caine, Vijay Vasudevan, Wei Han, Jiquan Ngiam,Hang Zhao, Aleksei Timofeev, Scott Ettinger, Maxim Krivokon, Amy Gao, Aditya Joshi, Yu	Zhang, Jonathon Shlens, Zhifeng Chen, and Dragomir Anguelov,"Scalability in Perception for Autonomous Driving: Waymo Open Dataset",18 Dec 2019
 	
 	\bibitem{key1}サイト名\\ \url{http://google.com} （yyyy年mm月dd日アクセス） % ウェブサイトの場合
 	\bibitem{GLCIC}SATOSHI IIZUKA,EDGAR SIMO-SERRA,HIROSHI ISHIKAWA,"Globally and Locally Consistent Image Completion",July 2017
 	%\bibitem{}
 \bibitem{key2}著者，書籍タイトル，出版                                      % 書籍，論文の場合
 \end{thebibliography}
+\newpage
+\bibliography{references}
 
 
 %% bibtexを使用する場合

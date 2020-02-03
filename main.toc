@@ -9,9 +9,9 @@
 \contentsline {subsection}{\numberline {2.3.1}畳み込み層}{7}{subsection.2.3.1}% 
 \contentsline {subsection}{\numberline {2.3.2}プーリング層}{7}{subsection.2.3.2}% 
 \contentsline {subsection}{\numberline {2.3.3}全結合層と活性化関数}{8}{subsection.2.3.3}% 
-\contentsline {subsubsection}{Relu関数}{8}{section*.4}% 
-\contentsline {subsubsection}{ソフトマックス関数}{8}{section*.5}% 
-\contentsline {subsubsection}{シグモイド関数}{8}{section*.6}% 
+\contentsline {subsubsection}{Relu関数}{8}{section*.9}% 
+\contentsline {subsubsection}{ソフトマックス関数}{8}{section*.10}% 
+\contentsline {subsubsection}{シグモイド関数}{8}{section*.11}% 
 \contentsline {section}{\numberline {2.4}敵対生成ネットワーク}{9}{section.2.4}% 
 \contentsline {subsection}{\numberline {2.4.1}GANの損失関数}{10}{subsection.2.4.1}% 
 \contentsline {subsection}{\numberline {2.4.2}GANの最適解}{10}{subsection.2.4.2}% 
@@ -27,7 +27,7 @@
 \contentsline {subsection}{\numberline {5.2.1}実験環境}{16}{subsection.5.2.1}% 
 \contentsline {subsection}{\numberline {5.2.2}使用したプログラミング言語とライブラリ}{16}{subsection.5.2.2}% 
 \contentsline {section}{\numberline {5.3}データセット}{17}{section.5.3}% 
-\contentsline {section}{\numberline {5.4}実験結果}{17}{section.5.4}% 
-\contentsline {chapter}{\numberline {第6章}考察}{18}{chapter.6}% 
-\contentsline {chapter}{\numberline {第7章}まとめ}{19}{chapter.7}% 
-\contentsline {chapter}{\numberline {付 録A }プログラムのソースコード}{23}{appendix.A}% 
+\contentsline {section}{\numberline {5.4}実験結果}{18}{section.5.4}% 
+\contentsline {chapter}{\numberline {第6章}考察}{19}{chapter.6}% 
+\contentsline {chapter}{\numberline {第7章}まとめ}{20}{chapter.7}% 
+\contentsline {chapter}{\numberline {付 録A }プログラムのソースコード}{24}{appendix.A}% 
