@@ -503,6 +503,59 @@ GLCICは画像を局所的にも大域的にも整合性の取れた画像を生
 	  \end{tabular}
   \end{figure}          
 \section{実験結果}
+先行研究\cite{GLCIC}では、補完ネットワークと判別ネットワークをそれぞれで学習させた後に相互学習を行っているが、転移学習で予め学習済みのモデルを用いたことやGANは一般に補完側より判別側が強くなりやすく補完側のLossが発散してしまう場合が多いので、提案手法では補完ネットワークのみの学習を行った後相互学習を行うという流れで実験を行った。
+\subsection{補完ネットワークの評価}
+補完ネットワークのlossについて\figref{fig:comp_loss1}と\figref{fig:comp_loss2}に示す。\\
+学習が進むに従ってlossの減少率は落ちていっているが、\figref{fig:comp_loss2}に示されるようにlossが発散することなく順調に学習が進んでいることが見て取れる。
+\begin{figure}[H]
+	\centering
+	  \begin{tabular}{c}
+		\begin{minipage}{0.50\hsize}
+		  \centering
+			\includegraphics[scale=0.5]
+			{images/result/loss/completion_loss1.png}
+			\caption{補完ネットワークのloss}
+			\label{fig:comp_loss1}
+		\end{minipage}
+   
+   
+		\begin{minipage}{0.50\hsize}
+		  \centering
+			\includegraphics[scale=0.5]
+							{images/result/loss/completion_loss2.png}
+							\caption{補完ネットワークのloss(2000から4000epochに関して拡大したもの)}
+							\label{fig:comp_loss2}
+		\end{minipage} \\
+	\end{tabular}
+\end{figure}  
+\subsection{判別ネットワークの評価}
+判別ネットワークのlossについて\figref{fig:disc_loss1}と\figref{fig:disc_loss2}に示す。\\
+どちらのグラフからもlossが収束せず多少減衰しながらもかなりepochごとの値に差異が有ることを示している。\\
+\begin{figure}[H]
+	\centering
+	  \begin{tabular}{c}
+		\begin{minipage}{0.50\hsize}
+		  \centering
+			\includegraphics[scale=0.5]
+			{images/result/loss/discrimination_loss1.png}
+			\caption{判別ネットワークのloss}
+			\label{fig:disc_loss1}
+		\end{minipage}
+   
+   
+		\begin{minipage}{0.50\hsize}
+		  \centering
+			\includegraphics[scale=0.5]
+							{images/result/loss/discrimination_loss2.png}
+							\caption{判別ネットワークのloss(値域を0.0-0.1に絞ったもの)}
+							\label{fig:disc_loss2}
+		\end{minipage} \\
+	\end{tabular}
+\end{figure}  
+\subsection{モデルによって車線を補完した結果}
+\subsubsection{車線の復元}
+
+\subsubsection{車線の補完}
 \chapter{考察}
 \chapter{まとめ}
 % END:本編----------------------------------------
