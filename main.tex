@@ -513,7 +513,7 @@ GLCICは画像を局所的にも大域的にも整合性の取れた画像を生
 		\begin{minipage}{0.50\hsize}
 		  \centering
 			\includegraphics[scale=0.5]
-			{images/result/loss/completion_loss1.png}
+			{images/result/loss/completion_loss1(2).png}
 			\caption{補完ネットワークのloss}
 			\label{fig:comp_loss1}
 		\end{minipage}
@@ -522,7 +522,7 @@ GLCICは画像を局所的にも大域的にも整合性の取れた画像を生
 		\begin{minipage}{0.50\hsize}
 		  \centering
 			\includegraphics[scale=0.5]
-							{images/result/loss/completion_loss2.png}
+							{images/result/loss/completion_loss2(2).png}
 							\caption{補完ネットワークのloss(2000から4000epochに関して拡大したもの)}
 							\label{fig:comp_loss2}
 		\end{minipage} \\
@@ -537,7 +537,7 @@ GLCICは画像を局所的にも大域的にも整合性の取れた画像を生
 		\begin{minipage}{0.50\hsize}
 		  \centering
 			\includegraphics[scale=0.5]
-			{images/result/loss/discrimination_loss1.png}
+			{images/result/loss/discrimination_loss1(2).png}
 			\caption{判別ネットワークのloss}
 			\label{fig:disc_loss1}
 		\end{minipage}
@@ -546,17 +546,59 @@ GLCICは画像を局所的にも大域的にも整合性の取れた画像を生
 		\begin{minipage}{0.50\hsize}
 		  \centering
 			\includegraphics[scale=0.5]
-							{images/result/loss/discrimination_loss2.png}
+							{images/result/loss/discrimination_loss2(2).png}
 							\caption{判別ネットワークのloss(値域を0.0-0.1に絞ったもの)}
 							\label{fig:disc_loss2}
 		\end{minipage} \\
 	\end{tabular}
-\end{figure}  
+\end{figure}
 \subsection{モデルによって車線を補完した結果}
 \subsubsection{車線の復元}
-
+すでにつながっていた部分をマスクしてモデルで予測した結果を\figref{fig:completion1-1}\figref{fig:completion1-2}に示す。\\
+補完前後を比較するとマスク部分に関してもともとつながっていた直線が確かに復元されていることが確認され、更に補完前は影で周辺のアスファルトとの差異が小さかった部分に関してよりはっきりと差異が見えるようになったのがわかる。
+\begin{figure}[H]
+	\centering
+	  \begin{tabular}{c}
+		\begin{minipage}{0.50\hsize}
+		  \centering
+			\includegraphics[scale=0.5]
+			{images/result/completion/result1-1.png}
+			\caption{補完前}
+			\label{fig:completion1-1}
+		\end{minipage}
+   
+   
+		\begin{minipage}{0.50\hsize}
+		  \centering
+			\includegraphics[scale=0.5]
+			{images/result/completion/result1-2.png}
+			\caption{補完後}
+			\label{fig:completion1-2}
+		\end{minipage} \\
+	\end{tabular}
+\end{figure}
 \subsubsection{車線の補完}
-\chapter{考察}
+\begin{figure}[H]
+	\centering
+	  \begin{tabular}{c}
+		\begin{minipage}{0.50\hsize}
+		  \centering
+			\includegraphics[scale=0.5]
+			{images/result/completion/result2-1.png}
+			\caption{補完前}
+			\label{fig:completion2-1}
+		\end{minipage}
+   
+   
+		\begin{minipage}{0.50\hsize}
+		  \centering
+			\includegraphics[scale=0.5]
+			{images/result/completion/result2-2.png}
+			\caption{補完後}
+			\label{fig:completion2-2}
+		\end{minipage} \\
+	\end{tabular}
+\end{figure}\chapter{考察}
 \chapter{まとめ}
 % END:本編----------------------------------------
 
