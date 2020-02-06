@@ -578,7 +578,8 @@ GLCICは画像を局所的にも大域的にも整合性の取れた画像を生
 	\end{tabular}
 \end{figure}
 \subsubsection{車線の補完}
-\figref{fig:completion2-1},\figref{fig:completion2-2}に途切れている車線をモデルで予測した結果を
+\figref{fig:completion2-1},\figref{fig:completion2-2}に途切れている車線をモデルで予測した結果を示す。\\
+\figref{fig:completion1-1},\figref{fig:completion1-2}に見られるほどの鮮明さはないが、確かに車線が伸びていて本来あるべき位置に車線が補完されているのが見て取れる。
 \begin{figure}[H]
 	\centering
 	  \begin{tabular}{c}
@@ -599,8 +600,16 @@ GLCICは画像を局所的にも大域的にも整合性の取れた画像を生
 			\label{fig:completion2-2}
 		\end{minipage} \\
 	\end{tabular}
-\end{figure}\chapter{考察}
+\end{figure}
+\chapter{考察}
+GANの学習においては判別側が強くなり補完側が意味のない画像を生成するようになることが多いが、\figref{fig:comp_loss1},\figref{fig:comp_loss2}に示すとおり補完側のlossは発散せず少しづつではあるが下がっているのでうまく補完側の学習ができたと言える。\\
+\indent しかしながらlossが下がりきって安定したわけではなくまだ下がる余地があるので、学習のドメインを絞って更に転移学習を行ったとはいえまだまだ学習の収束には時間がかかる見込みであり、1週間という時間では学習時間としては不十分であったので今後更に学習をすすめ、より正確に車線を補完できるようにしたい。\\
+\indent 次に学習後の生成画像については\figref{fig:completion1-1},\figref{fig:completion1-2}に示すようにもともと直線の車線があった部分については正しく復元することができており、学習が成功していることを示している。加えて赤線で囲まれた補完領域に注目すると、補完前より影によって車線が隠れている部分が鮮明に描かれておりこの点でも車線を実際に認識する際に貢献すると考えられる。\\
+\indent 実際に途切れている画像をモデルに与えてマスクした場合だが、\figref{fig:completion2-1},\figref{fig:completion2-2}に示すように、たしかに車線が延長され
+かつ本来車線があるべき部分に補完されているのが見える。もともと直線があった部分を復元したのと比較すると若干不鮮明では有るが、延長できているので正しく学習できている。
+今回提案手法ではマスクの範囲を車線が出現する確率が高い領域に限定したが、本来のGLCICでは画像内の任意の領域をマスクするのでその場合アスファルトの部分をマスクする確率が必然的に高くなり今回のような結果は出ず、本来白線がある部分もアスファルト色に補完していたのではないかと考えられる。
 \chapter{まとめ}
+高精度地図を用いずに行う自動運転において非常に重要な役割を果たす車線認識で、誤認識の元になる車線のカスレや途切れ直線の場合に補完することができた。\\しかし、まだ破線部分についての学習や補完の精度の向上など課題は有るので、今後より広い範囲で正確な保管ができるように、ゆくゆくは他の手法と組み合わせて車線の認識精度を向上できるように更に研究を進めていきたい。
 % END:本編----------------------------------------
 
 % START:参考文献----------------------------------
@@ -622,10 +631,10 @@ GLCICは画像を局所的にも大域的にも整合性の取れた画像を生
 	\bibitem{waymo-web}Waymo\\ \url{https://waymo.com/open/} （2020年01月30日アクセス）
 	\bibitem{waymo-paper}Pei Sun, Henrik Kretzschmar, Xerxes Dotiwalla,Aurelien Chouard, Vijaysai Patnaik, Paul Tsui,James Guo, Yin Zhou,Yuning Chai,Benjamin Caine, Vijay Vasudevan, Wei Han, Jiquan Ngiam,Hang Zhao, Aleksei Timofeev, Scott Ettinger, Maxim Krivokon, Amy Gao, Aditya Joshi, Yu	Zhang, Jonathon Shlens, Zhifeng Chen, and Dragomir Anguelov,"Scalability in Perception for Autonomous Driving: Waymo Open Dataset",18 Dec 2019
 	
-	\bibitem{key1}サイト名\\ \url{http://google.com} （yyyy年mm月dd日アクセス） % ウェブサイトの場合
+	%\bibitem{key1}サイト名\\ \url{http://google.com} （yyyy年mm月dd日アクセス） % ウェブサイトの場合
 	\bibitem{GLCIC}SATOSHI IIZUKA,EDGAR SIMO-SERRA,HIROSHI ISHIKAWA,"Globally and Locally Consistent Image Completion",July 2017
 	%\bibitem{}
-\bibitem{key2}著者，書籍タイトル，出版                                      % 書籍，論文の場合
+%\bibitem{key2}著者，書籍タイトル，出版                                      % 書籍，論文の場合
 \end{thebibliography}
 \newpage
 \bibliography{references}
@@ -646,6 +655,6 @@ GLCICは画像を局所的にも大域的にも整合性の取れた画像を生
 \appendix
 \chapter{プログラムのソースコード}
 GLCICを用いた車線補完の際に使用したプログラムのソースコードを示す．\\
-GitのURL
+\url{https://github.com/akisen/WhiteLineComplesion}
 \end{document}
 %------------------------------------------------
